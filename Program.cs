@@ -13,6 +13,13 @@ namespace Test
             Console.WriteLine("2. ConvertToSeconds");
             Console.WriteLine("3. Remove Vowels");
             Console.WriteLine("4. Array Average");
+            Console.WriteLine("5. Array Operation");
+            Console.WriteLine("6. Word Count");
+            Console.WriteLine("7. Is Prime");
+            Console.WriteLine("8.");
+            Console.WriteLine("9.");
+            Console.WriteLine("10.");
+            Console.WriteLine("11.");
             input = Convert.ToInt32(Console.ReadLine());
             switch (input)
             {
@@ -35,9 +42,15 @@ namespace Test
                 case 5:
                     Console.Clear();
                     ArrayOp();
+                    break;
                 case 6:
                     Console.Clear();
                     WordCount();
+                    break;
+                case 7:
+                    Console.Clear();
+                    IsPrime();
+                    break;
                 default:
                     Console.Clear();
                     Main();
@@ -46,6 +59,32 @@ namespace Test
             
            
         }
+
+        public static void IsPrime()
+        {
+        Console.WriteLine(IsPrime(7));  
+        Console.WriteLine(IsPrime(10));  
+        Console.WriteLine(IsPrime(2));   
+        Console.WriteLine(IsPrime(1));
+
+            Console.ReadLine();
+            Main();
+        }
+
+         static bool IsPrime(int num)
+    {
+        if (num < 2)
+            return false;
+
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+        
         public static void WordCount()
         {
  string sentence = "The anemone, the wild violet, the hepatica, and the funny little curled-up ferns.";
@@ -158,10 +197,29 @@ namespace Test
         }
         public static void RemoveVowels()
         {
-            Console.WriteLine("AEIOU");
-            Console.WriteLine("bcd fgh");
-            Console.WriteLine("C@#omput!er");
-            Console.WriteLine("");
+           Console.WriteLine($"\"{RemoveVowels("AEIOU")}\"");       
+            Console.WriteLine($"\"{RemoveVowels("bcd fgh")}\"");  
+            Console.WriteLine($"\"{RemoveVowels("C@#omput!er")}\"");
+            Console.WriteLine($"\"{RemoveVowels("")}\"");  
+            Console.ReadLine();
+            Main();
         }
+    static string RemoveVowels(string word)
+    {
+        if (string.IsNullOrEmpty(word))
+            return word;
+
+        StringBuilder result = new StringBuilder();
+
+        foreach (char c in word)
+        {
+            if ("aeiouAEIOU".IndexOf(c) == -1)
+            {
+                result.Append(c);
+            }
+        }
+
+        return result.ToString();
+    }
     }
 }

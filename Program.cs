@@ -32,6 +32,12 @@ namespace Test
                     Console.Clear();
                     ArrayAv();
                     break;
+                case 5:
+                    Console.Clear();
+                    ArrayOp();
+                case 6:
+                    Console.Clear();
+                    WordCount();
                 default:
                     Console.Clear();
                     Main();
@@ -40,14 +46,67 @@ namespace Test
             
            
         }
+        public static void WordCount()
+        {
+ string sentence = "The anemone, the wild violet, the hepatica, and the funny little curled-up ferns.";
+
+        string[] words = sentence.Split(new char[] { ' ', ',', '.', '-' }, StringSplitOptions.RemoveEmptyEntries);
+
+        int count = 0;
+
+        foreach (string word in words)
+        {
+            if (word.Equals("the", StringComparison.OrdinalIgnoreCase))
+            {
+                count++;
+            }
+        }
+
+        Console.WriteLine($"The word "the" appears {count} times.");
+    }
+        }
+
+        public static void ArrayOp()
+        {
+            Console.WriteLine("21, 19, 68, 55, 42, 12");
+            Console.WriteLine();
+             int[] nums = { 21, 19, 68, 55, 42, 12 };
+
+        Console.WriteLine("Odd numbers:");
+        foreach (int num in nums)
+        {
+            if (num % 2 != 0)
+            {
+                Console.WriteLine(num);
+            }
+        }
+            Console.WriteLine();
+
+        Array.Sort(nums);
+
+        Console.WriteLine("Sorted array:");
+        foreach (int num in nums)
+        {
+            Console.WriteLine(num);
+        }
+            Console.ReadLine();
+            Main();
+        }
+        
         public static void ArrayAv()
         {
-            double[] num = { 45.3, 67.5, -45.6, 20.34, -33.0, 45.6 };
+            double[] nums = { 45.3, 67.5, -45.6, 20.34, -33.0, 45.6 };
             Console.WriteLine("45.3, 67.5, -45.6, 20.34, -33.0, 45.6");
             Console.ReadLine();
-            double average, total;
-            total = ((num[1] + num[2] + num[3] + num[4] + num[5] + num[0]));
-            average = (num[1] + num[2] + num[3] + num[4] + num[5] + num[0]) / (double)num.Length;
+          
+            double sum = 0;
+
+        foreach (double num in nums)
+        {
+            sum += num;
+        }
+
+        double average = sum / nums.Length;
             Console.WriteLine($"The average of these numbers is {average}");
             Console.WriteLine($"The total of all these numbers is {total}");
             Console.ReadLine();

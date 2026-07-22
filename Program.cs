@@ -59,6 +59,10 @@ namespace Test
                     Console.Clear();
                     IsPal();
                     break;
+                case 9:
+                    Console.Clear();
+                    IsAn();
+                    break;
                 default:
                     Console.Clear();
                     Main();
@@ -255,7 +259,27 @@ namespace Test
             }
             Main();
         }
-        
+        public static void IsAn()
+{
+    Console.WriteLine("Input your first word");
+    string first = Console.ReadLine();
+    char[] charArray1 = first.ToCharArray();
+    Console.WriteLine("Input your second word");
+    string second = Console.ReadLine();
+    char[] charArray2 = second.ToCharArray();
+    if (charArray1 == charArray2)
+    {
+        Console.WriteLine("These sentences are an Anagram");
+        Console.ReadLine();
+    }
+    else
+    {
+        Console.WriteLine("These sentences are NOT an Anagram");
+        Console.ReadLine();
+    }
+    Main();
+
+}
     }
 }
 

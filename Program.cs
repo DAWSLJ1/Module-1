@@ -8,6 +8,8 @@ namespace Test
         {
             int input;
             double[] num = {45.3, 67.5, -45.6, 20.34, -33.0, 45.6};
+            Console.WriteLine("Which task would you like to visit?");
+            Console.WriteLine();
             Console.WriteLine("1. FizzBuzz");
             Console.WriteLine("2. ConvertToSeconds");
             input = Convert.ToInt32(Console.ReadLine());
@@ -72,6 +74,13 @@ namespace Test
             Console.WriteLine($"That amount of time is converted into {sec} seconds");
             Console.ReadLine();
             Main();
+        }
+        public static void RemoveVowels()
+        {
+            Console.WriteLine("AEIOU");
+            Console.WriteLine("bcd fgh");
+            Console.WriteLine("C@#omput!er");
+            Console.WriteLine("");
         }
     }
 }

@@ -7,11 +7,12 @@ namespace Test
         static void Main()
         {
             int input;
-            double[] num = {45.3, 67.5, -45.6, 20.34, -33.0, 45.6};
             Console.WriteLine("Which task would you like to visit?");
             Console.WriteLine();
             Console.WriteLine("1. FizzBuzz");
             Console.WriteLine("2. ConvertToSeconds");
+            Console.WriteLine("3. Remove Vowels");
+            Console.WriteLine("4. Array Average");
             input = Convert.ToInt32(Console.ReadLine());
             switch (input)
             {
@@ -23,6 +24,14 @@ namespace Test
                     Console.Clear();
                     ConvertToSeconds();
                     break;
+                case 3:
+                    Console.Clear();
+                    RemoveVowels();
+                    break;
+                case 4:
+                    Console.Clear();
+                    ArrayAv();
+                    break;
                 default:
                     Console.Clear();
                     Main();
@@ -30,6 +39,19 @@ namespace Test
             }
             
            
+        }
+        public static void ArrayAv()
+        {
+            double[] num = { 45.3, 67.5, -45.6, 20.34, -33.0, 45.6 };
+            Console.WriteLine("45.3, 67.5, -45.6, 20.34, -33.0, 45.6");
+            Console.ReadLine();
+            double average, total;
+            total = ((num[1] + num[2] + num[3] + num[4] + num[5] + num[0]));
+            average = (num[1] + num[2] + num[3] + num[4] + num[5] + num[0]) / (double)num.Length;
+            Console.WriteLine($"The average of these numbers is {average}");
+            Console.WriteLine($"The total of all these numbers is {total}");
+            Console.ReadLine();
+            Main();
         }
         public static void FizzBuzz()
         {

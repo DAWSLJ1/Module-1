@@ -68,6 +68,14 @@ namespace Test
                         Console.Clear();
                         IsAn();
                         break;
+                    case 10:
+                        Console.Clear();
+                        FilterCountries();
+                        break;
+                        case 11:
+                            Console.Clear();
+                        RandomJoke();
+                        break;
                     default:
                         Console.Clear();
                         //Main();
@@ -309,6 +317,52 @@ namespace Test
             
 
         }
+
+       public static void FilterCountries()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(@"countries.txt");
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    char[] letters = line.ToCharArray();
+                    if (Char.ToLower(letters[0]) == 'b')
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+                sr.Close();
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't find");
+            }
+        }
+        public static void RandomJoke()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(@"computer-jokes.txt");
+                List<string> jokes = new List<string>();
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    jokes.Add(line);
+                }
+                sr.Close();
+
+
+
+                Console.WriteLine(jokes[new Random().Next(0, jokes.Count)]);
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't find");
+            }
+        }
+
+
     }
 }
 

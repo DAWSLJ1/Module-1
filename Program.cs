@@ -70,10 +70,8 @@ namespace Test
 
         public static void IsPrime()
         {
-            Console.WriteLine("7 " + IsPrime(7));
-            Console.WriteLine("10 " + IsPrime(10));
-            Console.WriteLine("2 " + IsPrime(2));
-            Console.WriteLine("1 " + IsPrime(1));
+            Console.WriteLine("Enter a number that is either a or not a prime number");
+            Console.WriteLine(IsPrime(Convert.ToInt32(Console.ReadLine())));
 
             Console.ReadLine();
             Main();
@@ -257,6 +255,7 @@ namespace Test
             }
             Main();
         }
+        
     }
 }
 

@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Test
 {
@@ -6,70 +8,73 @@ namespace Test
     {
         static void Main()
         {
-            Console.Clear();
+            
             int input;
-            Console.WriteLine("Which task would you like to visit?");
-            Console.WriteLine();
-            Console.WriteLine("1. FizzBuzz");
-            Console.WriteLine("2. ConvertToSeconds");
-            Console.WriteLine("3. Remove Vowels");
-            Console.WriteLine("4. Array Average");
-            Console.WriteLine("5. Array Operation");
-            Console.WriteLine("6. Word Count");
-            Console.WriteLine("7. Is Prime");
-            Console.WriteLine("8. Is Palindrome");
-            Console.WriteLine("9. Is Anagram");
-            Console.WriteLine("10. Filter Countries");
-            Console.WriteLine("11. Random Joke");
-            Console.WriteLine("0. Exit");
-            input = Convert.ToInt32(Console.ReadLine());
-            switch (input)
+            do
             {
-                case 0:
-                    break;
-                case 1:
-                    Console.Clear();
-                    FizzBuzz();
-                    break;
-                case 2:
-                    Console.Clear();
-                    ConvertToSeconds();
-                    break;
-                case 3:
-                    Console.Clear();
-                    RemoveVowels();
-                    break;
-                case 4:
-                    Console.Clear();
-                    ArrayAv();
-                    break;
-                case 5:
-                    Console.Clear();
-                    ArrayOp();
-                    break;
-                case 6:
-                    Console.Clear();
-                    WordCount();
-                    break;
-                case 7:
-                    Console.Clear();
-                    IsPrime();
-                    break;
-                case 8:
-                    Console.Clear();
-                    IsPal();
-                    break;
-                case 9:
-                    Console.Clear();
-                    IsAn();
-                    break;
-                default:
-                    Console.Clear();
-                    Main();
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine("Which task would you like to visit?");
+                Console.WriteLine();
+                Console.WriteLine("1. FizzBuzz");
+                Console.WriteLine("2. ConvertToSeconds");
+                Console.WriteLine("3. Remove Vowels");
+                Console.WriteLine("4. Array Average");
+                Console.WriteLine("5. Array Operation");
+                Console.WriteLine("6. Word Count");
+                Console.WriteLine("7. Is Prime");
+                Console.WriteLine("8. Is Palindrome");
+                Console.WriteLine("9. Is Anagram");
+                Console.WriteLine("10. Filter Countries");
+                Console.WriteLine("11. Random Joke");
+                Console.WriteLine("0. Exit");
+                input = Convert.ToInt32(Console.ReadLine());
+                switch (input)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        Console.Clear();
+                        FizzBuzz();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        ConvertToSeconds();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        RemoveVowels();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        ArrayAv();
+                        break;
+                    case 5:
+                        Console.Clear();
+                        ArrayOp();
+                        break;
+                    case 6:
+                        Console.Clear();
+                        WordCount();
+                        break;
+                    case 7:
+                        Console.Clear();
+                        IsPrime();
+                        break;
+                    case 8:
+                        Console.Clear();
+                        IsPal();
+                        break;
+                    case 9:
+                        Console.Clear();
+                        IsAn();
+                        break;
+                    default:
+                        Console.Clear();
+                        //Main();
+                        break;
+                }
 
-
+            } while (input != 0);
         }
 
         public static void IsPrime()
@@ -78,7 +83,7 @@ namespace Test
             Console.WriteLine(IsPrime(Convert.ToInt32(Console.ReadLine())));
 
             Console.ReadLine();
-            Main();
+            
         }
 
         static bool IsPrime(int num)
@@ -114,7 +119,7 @@ namespace Test
 
             Console.WriteLine($"The word 'the' appears {count} times.");
             Console.ReadLine();
-            Main();
+            
         }
 
 
@@ -142,7 +147,7 @@ namespace Test
                 Console.WriteLine(num);
             }
             Console.ReadLine();
-            Main();
+           
         }
 
         public static void ArrayAv()
@@ -162,7 +167,7 @@ namespace Test
             Console.WriteLine($"The average of these numbers is {average}");
             Console.WriteLine($"The total of all these numbers is {sum}");
             Console.ReadLine();
-            Main();
+            
         }
         public static void FizzBuzz()
         {
@@ -190,7 +195,7 @@ namespace Test
                 Console.WriteLine(number);
                 Console.ReadLine();
             }
-            Main();
+           
         }
         public static void ConvertToSeconds()
         {
@@ -206,7 +211,7 @@ namespace Test
             sec = (convmin + convhour);
             Console.WriteLine($"That amount of time is converted into {sec} seconds");
             Console.ReadLine();
-            Main();
+         
         }
         public static void RemoveVowels()
         {
@@ -219,7 +224,7 @@ namespace Test
             Console.WriteLine();
             Console.WriteLine($"");
             Console.ReadLine();
-            Main();
+            
 
 
         }
@@ -257,29 +262,53 @@ namespace Test
                 Console.WriteLine("This sentence is NOT a palindrome");
                 Console.ReadLine();
             }
-            Main();
+            
         }
         public static void IsAn()
-{
-    Console.WriteLine("Input your first word");
-    string first = Console.ReadLine();
-    char[] charArray1 = first.ToCharArray();
-    Console.WriteLine("Input your second word");
-    string second = Console.ReadLine();
-    char[] charArray2 = second.ToCharArray();
-    if (charArray1 == charArray2)
-    {
-        Console.WriteLine("These sentences are an Anagram");
-        Console.ReadLine();
-    }
-    else
-    {
-        Console.WriteLine("These sentences are NOT an Anagram");
-        Console.ReadLine();
-    }
-    Main();
+        {
+            bool Is = true;
+            Console.WriteLine("Input your first word");
+            string first = Console.ReadLine();
+            char[] charArray1 = first.ToCharArray();
+            Array.Sort(charArray1);
+            Console.WriteLine("Input your second word");
+            string second = Console.ReadLine();
+            char[] charArray2 = second.ToCharArray();
+            Array.Sort(charArray2);
+            int count = 0;
 
-}
+            if (charArray1.Length != charArray2.Length)
+            {
+                Is = false;
+            }
+            else
+            {
+                for (int i = 0; i < charArray2.Length; i++)
+                {
+
+
+                    if (charArray1[i] != charArray2[i])
+                    {
+                        Is = false;
+                    }
+
+
+                   
+
+                }
+            }
+            if (Is == true)
+            {
+                Console.WriteLine("These sentences are an Anagram");
+            }
+            else 
+            {
+                Console.WriteLine("These sentences are NOT an Anagram");
+            }
+            Console.ReadLine();
+            
+
+        }
     }
 }
 

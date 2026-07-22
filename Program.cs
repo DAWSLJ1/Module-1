@@ -6,6 +6,7 @@ namespace Test
     {
         static void Main()
         {
+            Console.Clear();
             int input;
             Console.WriteLine("Which task would you like to visit?");
             Console.WriteLine();
@@ -16,13 +17,16 @@ namespace Test
             Console.WriteLine("5. Array Operation");
             Console.WriteLine("6. Word Count");
             Console.WriteLine("7. Is Prime");
-            Console.WriteLine("8.");
-            Console.WriteLine("9.");
-            Console.WriteLine("10.");
-            Console.WriteLine("11.");
+            Console.WriteLine("8. Is Palindrome");
+            Console.WriteLine("9. Is Anagram");
+            Console.WriteLine("10. Filter Countries");
+            Console.WriteLine("11. Random Joke");
+            Console.WriteLine("0. Exit");
             input = Convert.ToInt32(Console.ReadLine());
             switch (input)
             {
+                case 0:
+                    break;
                 case 1:
                     Console.Clear();
                     FizzBuzz();
@@ -51,110 +55,117 @@ namespace Test
                     Console.Clear();
                     IsPrime();
                     break;
+                case 8:
+                    Console.Clear();
+                    IsPal();
+                    break;
                 default:
                     Console.Clear();
                     Main();
                     break;
             }
-            
-           
+
+
         }
 
         public static void IsPrime()
         {
-        Console.WriteLine(IsPrime(7));  
-        Console.WriteLine(IsPrime(10));  
-        Console.WriteLine(IsPrime(2));   
-        Console.WriteLine(IsPrime(1));
+            Console.WriteLine("7 " + IsPrime(7));
+            Console.WriteLine("10 " + IsPrime(10));
+            Console.WriteLine("2 " + IsPrime(2));
+            Console.WriteLine("1 " + IsPrime(1));
 
             Console.ReadLine();
             Main();
         }
 
-         static bool IsPrime(int num)
-    {
-        if (num < 2)
-            return false;
-
-        for (int i = 2; i <= Math.Sqrt(num); i++)
+        static bool IsPrime(int num)
         {
-            if (num % i == 0)
+            if (num < 2)
                 return false;
+
+            for (int i = 2; i <= Math.Sqrt(num); i++)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+
+            return true;
         }
 
-        return true;
-    }
-        
         public static void WordCount()
         {
- string sentence = "The anemone, the wild violet, the hepatica, and the funny little curled-up ferns.";
+            string sentence = "The anemone, the wild violet, the hepatica, and the funny little curled-up ferns.";
+            Console.WriteLine("The anemone, the wild violet, the hepatica, and the funny little curled-up ferns.");
+            Console.WriteLine();
+            string[] words = sentence.Split(new char[] { ' ', ',', '.', '-' }, StringSplitOptions.RemoveEmptyEntries);
 
-        string[] words = sentence.Split(new char[] { ' ', ',', '.', '-' }, StringSplitOptions.RemoveEmptyEntries);
+            int count = 0;
 
-        int count = 0;
-
-        foreach (string word in words)
-        {
-            if (word.Equals("the", StringComparison.OrdinalIgnoreCase))
+            foreach (string word in words)
             {
-                count++;
+                if (word.Equals("the", StringComparison.OrdinalIgnoreCase))
+                {
+                    count++;
+                }
             }
+
+            Console.WriteLine($"The word 'the' appears {count} times.");
+            Console.ReadLine();
+            Main();
         }
 
-        Console.WriteLine($"The word "the" appears {count} times.");
-    }
-        }
 
         public static void ArrayOp()
         {
             Console.WriteLine("21, 19, 68, 55, 42, 12");
             Console.WriteLine();
-             int[] nums = { 21, 19, 68, 55, 42, 12 };
+            int[] nums = { 21, 19, 68, 55, 42, 12 };
 
-        Console.WriteLine("Odd numbers:");
-        foreach (int num in nums)
-        {
-            if (num % 2 != 0)
+            Console.WriteLine("Odd numbers:");
+            foreach (int num in nums)
+            {
+                if (num % 2 != 0)
+                {
+                    Console.WriteLine(num);
+                }
+            }
+            Console.WriteLine();
+
+            Array.Sort(nums);
+
+            Console.WriteLine("Sorted array:");
+            foreach (int num in nums)
             {
                 Console.WriteLine(num);
             }
-        }
-            Console.WriteLine();
-
-        Array.Sort(nums);
-
-        Console.WriteLine("Sorted array:");
-        foreach (int num in nums)
-        {
-            Console.WriteLine(num);
-        }
             Console.ReadLine();
             Main();
         }
-        
+
         public static void ArrayAv()
         {
             double[] nums = { 45.3, 67.5, -45.6, 20.34, -33.0, 45.6 };
             Console.WriteLine("45.3, 67.5, -45.6, 20.34, -33.0, 45.6");
             Console.ReadLine();
-          
+
             double sum = 0;
 
-        foreach (double num in nums)
-        {
-            sum += num;
-        }
+            foreach (double num in nums)
+            {
+                sum += num;
+            }
 
-        double average = sum / nums.Length;
+            double average = sum / nums.Length;
             Console.WriteLine($"The average of these numbers is {average}");
-            Console.WriteLine($"The total of all these numbers is {total}");
+            Console.WriteLine($"The total of all these numbers is {sum}");
             Console.ReadLine();
             Main();
         }
         public static void FizzBuzz()
         {
             int number;
-            
+
             Console.WriteLine("Input a number");
             number = Convert.ToInt32(Console.ReadLine());
             if (number % 3 == 0 && number % 5 == 0)
@@ -174,8 +185,8 @@ namespace Test
             }
             else
             {
-                    Console.WriteLine(number);
-                    Console.ReadLine();              
+                Console.WriteLine(number);
+                Console.ReadLine();
             }
             Main();
         }
@@ -197,29 +208,55 @@ namespace Test
         }
         public static void RemoveVowels()
         {
-           Console.WriteLine($"\"{RemoveVowels("AEIOU")}\"");       
-            Console.WriteLine($"\"{RemoveVowels("bcd fgh")}\"");  
-            Console.WriteLine($"\"{RemoveVowels("C@#omput!er")}\"");
-            Console.WriteLine($"\"{RemoveVowels("")}\"");  
+            Console.WriteLine("AEIOU");
+            Console.WriteLine("bcd fgh");
+            Console.WriteLine("C@#omput!er");
+            Console.WriteLine("''");
+            Console.WriteLine();
+            Console.WriteLine("Converted");
+            Console.WriteLine();
+            Console.WriteLine($"");
             Console.ReadLine();
             Main();
+
+
         }
-    static string RemoveVowels(string word)
-    {
-        if (string.IsNullOrEmpty(word))
-            return word;
-
-        StringBuilder result = new StringBuilder();
-
-        foreach (char c in word)
+        public static void RemoveVowels(string word)
         {
-            if ("aeiouAEIOU".IndexOf(c) == -1)
+            string result = new string(word);
+            foreach (char c in word)
             {
-                result.Append(c);
+                if ("aeiouAEIOU".IndexOf(c) == -1)
+                {
+                    result.Append(c);
+                }
             }
+
         }
 
-        return result.ToString();
-    }
+        public static void IsPal()
+        {
+            Console.WriteLine("Write a sentence");
+            string sentence = Console.ReadLine();
+            char[] charArray = sentence.ToCharArray();
+            Array.Reverse(charArray);
+            string newsentence = new string(charArray);
+            Console.WriteLine();
+
+
+            if (sentence == newsentence)
+            {
+                Console.WriteLine("This sentence is a palindrome");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine(newsentence);
+                Console.WriteLine("This sentence is NOT a palindrome");
+                Console.ReadLine();
+            }
+            Main();
+        }
     }
 }
+

@@ -338,6 +338,7 @@ namespace Test
             {
                 Console.WriteLine("Couldn't find");
             }
+            Console.ReadLine();
         }
         public static void RandomJoke()
         {
@@ -360,6 +361,7 @@ namespace Test
             {
                 Console.WriteLine("Couldn't find");
             }
+            Console.ReadLine();
         }
 
 

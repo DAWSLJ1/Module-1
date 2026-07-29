@@ -83,6 +83,7 @@ namespace Test
                 }
 
             } while (input != 0);
+
         }
 
         public static void IsPrime()
@@ -223,29 +224,27 @@ namespace Test
         }
         public static void RemoveVowels()
         {
-            Console.WriteLine("AEIOU");
-            Console.WriteLine("bcd fgh");
-            Console.WriteLine("C@#omput!er");
-            Console.WriteLine("''");
-            Console.WriteLine();
-            Console.WriteLine("Converted");
-            Console.WriteLine();
-            Console.WriteLine($"");
+            Console.WriteLine(Vowels("AEIOU"));
+            Console.WriteLine(Vowels("bcd fgh"));
+            Console.WriteLine(Vowels("C@#omput!er"));
+            Console.WriteLine(Vowels("''"));
             Console.ReadLine();
             
 
 
         }
-        public static void RemoveVowels(string word)
+        public static string Vowels(string word)
         {
-            string result = new string(word);
+            string result = "";
             foreach (char c in word)
             {
-                if ("aeiouAEIOU".IndexOf(c) == -1)
+                if (char.ToLower(c) != 'a' && (char.ToLower(c) != 'e' && (char.ToLower(c) != 'u' && (char.ToLower(c) != 'o' && (char.ToLower(c) != 'i')))))
                 {
-                    result.Append(c);
+                    result += c;
                 }
+               
             }
+            return result;
 
         }
 
